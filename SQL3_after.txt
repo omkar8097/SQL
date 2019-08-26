@@ -1,0 +1,777 @@
+| prasanna           |
+| product            |
+| project18          |
+| rita               |
+| rockstar           |
+| sahil              |
+| student            |
+| suraj              |
+| tejas              |
+| test               |
+| usha               |
+| vehicledb          |
+| vita_db            |
++--------------------+
+45 rows in set (0.78 sec)
+
+mysql> CREATE DATABASE omkarr
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> USE OMKARR
+Database changed
+mysql> SHOW TABLES;
+Empty set (0.00 sec)
+
+
+mysql>  CREATE TABLE organs
+    ->  (  a INT AUTO_INCREMENT primary key,
+    ->     b VARCHAR(20),
+    ->     sal  FLOAT ,
+    ->     info TEXT,
+    ->     D DATETIME);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> DESCRIBE organs;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| a     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| b     | varchar(20) | YES  |     | NULL    |                |
+| sal   | float       | YES  |     | NULL    |                |
+| info  | text        | YES  |     | NULL    |                |
+| D     | datetime    | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+5 rows in set (0.05 sec)
+
+mysql> select* from organs;
+Empty set (0.00 sec)
+
+mysql>
+mysql> INSERT INTO organs (b,sal,info,d) VALUES ('OMKAR',500.23,'WE are GOOD PER
+SON',NOW());
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select* from organs;
++---+-------+--------+--------------------+---------------------+
+| a | b     | sal    | info               | D                   |
++---+-------+--------+--------------------+---------------------+
+| 1 | OMKAR | 500.23 | WE are GOOD PERSON | 2019-08-26 19:51:34 |
++---+-------+--------+--------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+mysql> INSERT INTO organs (b,sal,info,d) VALUES ('akshay',500.23,'WE are GOOD PE
+RSON',NOW()),
+    -> ('bjhjh',88,'WE are GOOD PERSON',NOW()),
+    -> ('cljk',999,'WE are GOOD PERSON',NOW()),
+    -> ('dddnmnm',550.23,'WE are GOOD PERSON',NOW()),
+    -> ('ytby',999,'WE are GOOD PERSON',NOW()),
+    -> ('hjway',3233,'WE are GOOD PERSON',NOW()),
+    -> ('erfdn',0221.23,'WE are GOOD PERSON',NOW()),
+    -> ('oik',212,'WE are GOOD PERSON',NOW()),
+    -> ('mmmmn',12224,'WE are GOOD PERSON',NOW()),
+    -> ('dddddb',2212449,'WE are GOOD PERSON',NOW()),
+    -> ('p',5221,'WE are GOOD PERSON',NOW()),
+    -> ('hhjjel',2233,'WE are GOOD PERSON',NOW()),
+    -> ('....sa',99999,'WE are GOOD PERSON',NOW());
+Query OK, 13 rows affected (0.03 sec)
+Records: 13  Duplicates: 0  Warnings: 0
+
+
+mysql> select* from organs;
++----+---------+--------------+--------------------+---------------------+
+| a  | b       | sal          | info               | D                   |
++----+---------+--------------+--------------------+---------------------+
+|  1 | OMKAR   |       500.23 | WE are GOOD PERSON | 2019-08-26 19:51:34 |
+|  2 | akshay  |       500.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+|  3 | bjhjh   |           88 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+|  4 | cljk    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+|  5 | dddnmnm |       550.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+|  6 | ytby    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+|  7 | hjway   |         3233 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+|  8 | erfdn   |       221.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+|  9 | oik     |          212 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+| 10 | mmmmn   |        12224 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+| 11 | dddddb  | 2.21245e+006 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+| 12 | p       |         5221 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+| 13 | hhjjel  |         2233 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
+| 14 | ....sa  |        99999 | WE are GOOD PERSON | 2019-08-26 19:56:38 |
++----+---------+--------------+--------------------+---------------------+
+14 rows in set (0.00 sec)
+
+
+mysql> alter table organs
+    -> add column mem enum('a','b','c');
+Query OK, 14 rows affected (0.23 sec)
+Records: 14  Duplicates: 0  Warnings: 0
+
+mysql> alter table organs
+    -> add column hob set('x','y','z');
+Query OK, 14 rows affected (0.23 sec)
+Records: 14  Duplicates: 0  Warnings: 0
+
+mysql> describe organs;
++-------+-------------------+------+-----+---------+----------------+
+| Field | Type              | Null | Key | Default | Extra          |
++-------+-------------------+------+-----+---------+----------------+
+| a     | int(11)           | NO   | PRI | NULL    | auto_increment |
+| b     | varchar(20)       | YES  |     | NULL    |                |
+| sal   | float             | YES  |     | NULL    |                |
+| info  | text              | YES  |     | NULL    |                |
+| D     | datetime          | YES  |     | NULL    |                |
+| mem   | enum('a','b','c') | YES  |     | NULL    |                |
+| hob   | set('x','y','z')  | YES  |     | NULL    |                |
++-------+-------------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+mysql> select * from organs;
++----+---------+--------------+--------------------+---------------------+------
++------+
+| a  | b       | sal          | info               | D                   | mem
+| hob  |
++----+---------+--------------+--------------------+---------------------+------
++------+
+|  1 | OMKAR   |       500.23 | WE are GOOD PERSON | 2019-08-26 19:51:34 | NULL
+| NULL |
+|  2 | akshay  |       500.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  3 | bjhjh   |           88 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  4 | cljk    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  5 | dddnmnm |       550.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  6 | ytby    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  7 | hjway   |         3233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  8 | erfdn   |       221.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  9 | oik     |          212 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 10 | mmmmn   |        12224 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 11 | dddddb  | 2.21245e+006 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 12 | p       |         5221 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 13 | hhjjel  |         2233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 14 | ....sa  |        99999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
++----+---------+--------------+--------------------+---------------------+------
++------+
+14 rows in set (0.00 sec)
+
+mysql> select a,b,mem,hob from organs;
++----+---------+------+------+
+| a  | b       | mem  | hob  |
++----+---------+------+------+
+|  1 | OMKAR   | NULL | NULL |
+|  2 | akshay  | NULL | NULL |
+|  3 | bjhjh   | NULL | NULL |
+|  4 | cljk    | NULL | NULL |
+|  5 | dddnmnm | NULL | NULL |
+|  6 | ytby    | NULL | NULL |
+|  7 | hjway   | NULL | NULL |
+|  8 | erfdn   | NULL | NULL |
+|  9 | oik     | NULL | NULL |
+| 10 | mmmmn   | NULL | NULL |
+| 11 | dddddb  | NULL | NULL |
+| 12 | p       | NULL | NULL |
+| 13 | hhjjel  | NULL | NULL |
+| 14 | ....sa  | NULL | NULL |
++----+---------+------+------+
+14 rows in set (0.00 sec)
+
+mysql> INSERT INTO organs
+    -> (mem,hob)VALUES('a','x,y');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select a,b,mem,hob from organs;
++----+---------+------+------+
+| a  | b       | mem  | hob  |
++----+---------+------+------+
+|  1 | OMKAR   | NULL | NULL |
+|  2 | akshay  | NULL | NULL |
+|  3 | bjhjh   | NULL | NULL |
+|  4 | cljk    | NULL | NULL |
+|  5 | dddnmnm | NULL | NULL |
+|  6 | ytby    | NULL | NULL |
+|  7 | hjway   | NULL | NULL |
+|  8 | erfdn   | NULL | NULL |
+|  9 | oik     | NULL | NULL |
+| 10 | mmmmn   | NULL | NULL |
+| 11 | dddddb  | NULL | NULL |
+| 12 | p       | NULL | NULL |
+| 13 | hhjjel  | NULL | NULL |
+| 14 | ....sa  | NULL | NULL |
+| 15 | NULL    | a    | x,y  |
++----+---------+------+------+
+15 rows in set (0.00 sec)
+
+
+mysql> update organs
+    -> set mem='a'
+    -> where a=1;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update organs
+    -> set mem='a',hob='x,z'
+    -> where a=1;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select a,b,mem,hob from organs;
++----+---------+------+------+
+| a  | b       | mem  | hob  |
++----+---------+------+------+
+|  1 | OMKAR   | a    | x,z  |
+|  2 | akshay  | NULL | NULL |
+|  3 | bjhjh   | NULL | NULL |
+|  4 | cljk    | NULL | NULL |
+|  5 | dddnmnm | NULL | NULL |
+|  6 | ytby    | NULL | NULL |
+|  7 | hjway   | NULL | NULL |
+|  8 | erfdn   | NULL | NULL |
+|  9 | oik     | NULL | NULL |
+| 10 | mmmmn   | NULL | NULL |
+| 11 | dddddb  | NULL | NULL |
+| 12 | p       | NULL | NULL |
+| 13 | hhjjel  | NULL | NULL |
+| 14 | ....sa  | NULL | NULL |
+| 15 | NULL    | a    | x,y  |
++----+---------+------+------+
+15 rows in set (0.00 sec)
+
+mysql> delete from organs where a=NULL;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select a,b,mem,hob from organs;
++----+---------+------+------+
+| a  | b       | mem  | hob  |
++----+---------+------+------+
+|  1 | OMKAR   | a    | x,z  |
+|  2 | akshay  | NULL | NULL |
+|  3 | bjhjh   | NULL | NULL |
+|  4 | cljk    | NULL | NULL |
+|  5 | dddnmnm | NULL | NULL |
+|  6 | ytby    | NULL | NULL |
+|  7 | hjway   | NULL | NULL |
+|  8 | erfdn   | NULL | NULL |
+|  9 | oik     | NULL | NULL |
+| 10 | mmmmn   | NULL | NULL |
+| 11 | dddddb  | NULL | NULL |
+| 12 | p       | NULL | NULL |
+| 13 | hhjjel  | NULL | NULL |
+| 14 | ....sa  | NULL | NULL |
+| 15 | NULL    | a    | x,y  |
++----+---------+------+------+
+15 rows in set (0.00 sec)
+
+mysql> delete from organs where a is NULL;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select a,b,mem,hob from organs;
++----+---------+------+------+
+| a  | b       | mem  | hob  |
++----+---------+------+------+
+|  1 | OMKAR   | a    | x,z  |
+|  2 | akshay  | NULL | NULL |
+|  3 | bjhjh   | NULL | NULL |
+|  4 | cljk    | NULL | NULL |
+|  5 | dddnmnm | NULL | NULL |
+|  6 | ytby    | NULL | NULL |
+|  7 | hjway   | NULL | NULL |
+|  8 | erfdn   | NULL | NULL |
+|  9 | oik     | NULL | NULL |
+| 10 | mmmmn   | NULL | NULL |
+| 11 | dddddb  | NULL | NULL |
+| 12 | p       | NULL | NULL |
+| 13 | hhjjel  | NULL | NULL |
+| 14 | ....sa  | NULL | NULL |
++----+---------+------+------+
+14 rows in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_omkarr |
++------------------+
+| organs           |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| account            |
+| adventureworks     |
+| ajinkya            |
+| app                |
+| app1               |
+| blue               |
+| book29             |
+| book30             |
+| bookworm           |
+| bookwormpro        |
+| datap              |
+| datau              |
+| day2               |
+| day2assign         |
+| db4                |
+| db5                |
+| dbms               |
+| demo               |
+| devaa              |
+| emp                |
+| employee           |
+| employeee          |
+| exam               |
+| hobman             |
+| marine             |
+| mydata             |
+| mydb               |
+| mysql              |
+| neelam             |
+| nikhil             |
+| omkarr             |
+| pooja              |
+| prasanna           |
+| product            |
+| project18          |
+| rita               |
+| rockstar           |
+| sahil              |
+| student            |
+| suraj              |
+| tejas              |
+| test               |
+| usha               |
+| vehicledb          |
+| vita_db            |
++--------------------+
+46 rows in set (0.06 sec)
+
+mysql> use pooja;
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_pooja |
++-----------------+
+| actor           |
+| dept            |
+| emp             |
+| movie           |
+| moviesong       |
++-----------------+
+5 rows in set (0.09 sec)
+
+mysql> select * from moviesong;
++----+-------------------------+---------------------------+
+| id | movieName               | songName                  |
++----+-------------------------+---------------------------+
+|  1 | Sholay                  | Yeh dosti                 |
+|  2 | Sholay                  | holi ke din               |
+|  3 | Sholay                  | Haan jab tak hai jaan     |
+|  4 | Lawaaris                | jiska koi nahin           |
+|  5 | Lawaaris                | apni to jaise taise       |
+|  6 | Lawaaris                | kab ke bicchde huve       |
+|  7 | Mukaddar_ka_Sikandar    | rote huve aate hai sab    |
+|  8 | Mukaddar_ka_Sikandar    | salaam-e-ishq             |
+|  9 | Mukaddar_ka_Sikandar    | o saathi re               |
+| 10 | Baazigar                | Baazigar o Baazigar       |
+| 11 | Baazigar                | Kitaabein bahoot si       |
+| 12 | Baazigar                | yeh kaali kaali aankhen   |
+| 13 | DDLJ                    | n jaane mere dil ko       |
+| 14 | DDLJ                    | tujhe dekha to yeh jaana  |
+| 15 | DDLJ                    | mehendi laga ke rakhana   |
+| 16 | Darr                    | tu mere saamne            |
+| 17 | Darr                    | jaadu teri nazar          |
+| 18 | Darr                    | chhota sa ghar            |
+| 19 | Qayamat_se_Qayamat_tak  | ae mere humsafar          |
+| 20 | Qayamat_se_Qayamat_tak  | papa kehte hai            |
+| 21 | Qayamat_se_Qayamat_tak  | akele hai to kya ghum hai |
+| 22 | Dil_Hai_Ke_Maanta_Nahin | Dil Hai Ke Maanta Nahin   |
+| 23 | Dil_Hai_Ke_Maanta_Nahin | dil tujh pe aa gaya       |
+| 24 | Dil_Hai_Ke_Maanta_Nahin | tu pyaar hai kisi aur ka  |
+| 25 | Hum_Hain_Raahi_Pyaarke  | yun hi katt jaayega       |
+| 26 | Hum_Hain_Raahi_Pyaarke  | mujh se mohabbat ka       |
++----+-------------------------+---------------------------+
+26 rows in set (0.02 sec)
+
+mysql> describe moviesong;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   | PRI | NULL    |       |
+| movieName | varchar(30) | YES  |     | NULL    |       |
+| songName  | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> truncate moviesong;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> describe moviesong;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   | PRI | NULL    |       |
+| movieName | varchar(30) | YES  |     | NULL    |       |
+| songName  | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * from moviesong;
+Empty set (0.00 sec)
+
+
+mysql> drop table moviesong;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from moviesong;
+ERROR 1146 (42S02): Table 'pooja.moviesong' doesn't exist
+mysql>
+
+mysql> select * from organs
+    -> order by b;
++----+---------+--------------+--------------------+---------------------+------
++------+
+| a  | b       | sal          | info               | D                   | mem
+| hob  |
++----+---------+--------------+--------------------+---------------------+------
++------+
+| 14 | ....sa  |        99999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  2 | akshay  |       500.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  3 | bjhjh   |           88 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  4 | cljk    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 11 | dddddb  | 2.21245e+006 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  5 | dddnmnm |       550.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  8 | erfdn   |       221.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 13 | hhjjel  |         2233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  7 | hjway   |         3233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 10 | mmmmn   |        12224 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  9 | oik     |          212 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  1 | OMKAR   |       500.23 | WE are GOOD PERSON | 2019-08-26 19:51:34 | a
+| x,z  |
+| 12 | p       |         5221 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  6 | ytby    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
++----+---------+--------------+--------------------+---------------------+------
++------+
+14 rows in set (0.00 sec)
+
+mysql> select * from organs
+    -> order by b,sal desc;
++----+---------+--------------+--------------------+---------------------+------
++------+
+| a  | b       | sal          | info               | D                   | mem
+| hob  |
++----+---------+--------------+--------------------+---------------------+------
++------+
+| 14 | ....sa  |        99999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  2 | akshay  |       500.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  3 | bjhjh   |           88 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  4 | cljk    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 11 | dddddb  | 2.21245e+006 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  5 | dddnmnm |       550.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  8 | erfdn   |       221.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 13 | hhjjel  |         2233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  7 | hjway   |         3233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 10 | mmmmn   |        12224 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  9 | oik     |          212 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  1 | OMKAR   |       500.23 | WE are GOOD PERSON | 2019-08-26 19:51:34 | a
+| x,z  |
+| 12 | p       |         5221 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  6 | ytby    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
++----+---------+--------------+--------------------+---------------------+------
++------+
+14 rows in set (0.00 sec)
+
+mysql> insert into organs
+    -> (b,sal)
+    -> values('aa',900),('aks',435),('okkk',756);
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from organs;
++----+---------+--------------+--------------------+---------------------+------
++------+
+| a  | b       | sal          | info               | D                   | mem
+| hob  |
++----+---------+--------------+--------------------+---------------------+------
++------+
+|  1 | OMKAR   |       500.23 | WE are GOOD PERSON | 2019-08-26 19:51:34 | a
+| x,z  |
+|  2 | akshay  |       500.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  3 | bjhjh   |           88 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  4 | cljk    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  5 | dddnmnm |       550.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  6 | ytby    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  7 | hjway   |         3233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  8 | erfdn   |       221.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  9 | oik     |          212 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 10 | mmmmn   |        12224 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 11 | dddddb  | 2.21245e+006 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 12 | p       |         5221 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 13 | hhjjel  |         2233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 14 | ....sa  |        99999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 16 | aa      |          900 | NULL               | NULL                | NULL
+| NULL |
+| 17 | aks     |          435 | NULL               | NULL                | NULL
+| NULL |
+| 18 | okkk    |          756 | NULL               | NULL                | NULL
+| NULL |
++----+---------+--------------+--------------------+---------------------+------
++------+
+17 rows in set (0.00 sec)
+
+mysql> select a,b,sal,mem,hob,d
+    -> from organs
+    -> order by 4;
++----+---------+--------------+------+------+---------------------+
+| a  | b       | sal          | mem  | hob  | d                   |
++----+---------+--------------+------+------+---------------------+
+| 18 | okkk    |          756 | NULL | NULL | NULL                |
+| 17 | aks     |          435 | NULL | NULL | NULL                |
+| 16 | aa      |          900 | NULL | NULL | NULL                |
+| 14 | ....sa  |        99999 | NULL | NULL | 2019-08-26 19:56:38 |
+| 13 | hhjjel  |         2233 | NULL | NULL | 2019-08-26 19:56:38 |
+| 12 | p       |         5221 | NULL | NULL | 2019-08-26 19:56:38 |
+| 11 | dddddb  | 2.21245e+006 | NULL | NULL | 2019-08-26 19:56:38 |
+| 10 | mmmmn   |        12224 | NULL | NULL | 2019-08-26 19:56:38 |
+|  9 | oik     |          212 | NULL | NULL | 2019-08-26 19:56:38 |
+|  8 | erfdn   |       221.23 | NULL | NULL | 2019-08-26 19:56:38 |
+|  7 | hjway   |         3233 | NULL | NULL | 2019-08-26 19:56:38 |
+|  6 | ytby    |          999 | NULL | NULL | 2019-08-26 19:56:38 |
+|  5 | dddnmnm |       550.23 | NULL | NULL | 2019-08-26 19:56:38 |
+|  4 | cljk    |          999 | NULL | NULL | 2019-08-26 19:56:38 |
+|  3 | bjhjh   |           88 | NULL | NULL | 2019-08-26 19:56:38 |
+|  2 | akshay  |       500.23 | NULL | NULL | 2019-08-26 19:56:38 |
+|  1 | OMKAR   |       500.23 | a    | x,z  | 2019-08-26 19:51:34 |
++----+---------+--------------+------+------+---------------------+
+17 rows in set (0.00 sec)
+
+mysql> select a,b,sal,mem,hob,d
+    -> from organs
+    -> order by 2;
++----+---------+--------------+------+------+---------------------+
+| a  | b       | sal          | mem  | hob  | d                   |
++----+---------+--------------+------+------+---------------------+
+| 14 | ....sa  |        99999 | NULL | NULL | 2019-08-26 19:56:38 |
+| 16 | aa      |          900 | NULL | NULL | NULL                |
+| 17 | aks     |          435 | NULL | NULL | NULL                |
+|  2 | akshay  |       500.23 | NULL | NULL | 2019-08-26 19:56:38 |
+|  3 | bjhjh   |           88 | NULL | NULL | 2019-08-26 19:56:38 |
+|  4 | cljk    |          999 | NULL | NULL | 2019-08-26 19:56:38 |
+| 11 | dddddb  | 2.21245e+006 | NULL | NULL | 2019-08-26 19:56:38 |
+|  5 | dddnmnm |       550.23 | NULL | NULL | 2019-08-26 19:56:38 |
+|  8 | erfdn   |       221.23 | NULL | NULL | 2019-08-26 19:56:38 |
+| 13 | hhjjel  |         2233 | NULL | NULL | 2019-08-26 19:56:38 |
+|  7 | hjway   |         3233 | NULL | NULL | 2019-08-26 19:56:38 |
+| 10 | mmmmn   |        12224 | NULL | NULL | 2019-08-26 19:56:38 |
+|  9 | oik     |          212 | NULL | NULL | 2019-08-26 19:56:38 |
+| 18 | okkk    |          756 | NULL | NULL | NULL                |
+|  1 | OMKAR   |       500.23 | a    | x,z  | 2019-08-26 19:51:34 |
+| 12 | p       |         5221 | NULL | NULL | 2019-08-26 19:56:38 |
+|  6 | ytby    |          999 | NULL | NULL | 2019-08-26 19:56:38 |
++----+---------+--------------+------+------+---------------------+
+17 rows in set (0.00 sec)
+
+mysql> select * from organs;
++----+---------+--------------+--------------------+---------------------+------
++------+
+| a  | b       | sal          | info               | D                   | mem
+| hob  |
++----+---------+--------------+--------------------+---------------------+------
++------+
+|  1 | OMKAR   |       500.23 | WE are GOOD PERSON | 2019-08-26 19:51:34 | a
+| x,z  |
+|  2 | akshay  |       500.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  3 | bjhjh   |           88 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  4 | cljk    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  5 | dddnmnm |       550.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  6 | ytby    |          999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  7 | hjway   |         3233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  8 | erfdn   |       221.23 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+|  9 | oik     |          212 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 10 | mmmmn   |        12224 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 11 | dddddb  | 2.21245e+006 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 12 | p       |         5221 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 13 | hhjjel  |         2233 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 14 | ....sa  |        99999 | WE are GOOD PERSON | 2019-08-26 19:56:38 | NULL
+| NULL |
+| 16 | aa      |          900 | NULL               | NULL                | NULL
+| NULL |
+| 17 | aks     |          435 | NULL               | NULL                | NULL
+| NULL |
+| 18 | okkk    |          756 | NULL               | NULL                | NULL
+| NULL |
++----+---------+--------------+--------------------+---------------------+------
++------+
+17 rows in set (0.00 sec)
+
+mysql> select a,b,sal,mem,hob,d
+    -> from organs
+    -> order by 2;
++----+---------+--------------+------+------+---------------------+
+| a  | b       | sal          | mem  | hob  | d                   |
++----+---------+--------------+------+------+---------------------+
+| 14 | ....sa  |        99999 | NULL | NULL | 2019-08-26 19:56:38 |
+| 16 | aa      |          900 | NULL | NULL | NULL                |
+| 17 | aks     |          435 | NULL | NULL | NULL                |
+|  2 | akshay  |       500.23 | NULL | NULL | 2019-08-26 19:56:38 |
+|  3 | bjhjh   |           88 | NULL | NULL | 2019-08-26 19:56:38 |
+|  4 | cljk    |          999 | NULL | NULL | 2019-08-26 19:56:38 |
+| 11 | dddddb  | 2.21245e+006 | NULL | NULL | 2019-08-26 19:56:38 |
+|  5 | dddnmnm |       550.23 | NULL | NULL | 2019-08-26 19:56:38 |
+|  8 | erfdn   |       221.23 | NULL | NULL | 2019-08-26 19:56:38 |
+| 13 | hhjjel  |         2233 | NULL | NULL | 2019-08-26 19:56:38 |
+|  7 | hjway   |         3233 | NULL | NULL | 2019-08-26 19:56:38 |
+| 10 | mmmmn   |        12224 | NULL | NULL | 2019-08-26 19:56:38 |
+|  9 | oik     |          212 | NULL | NULL | 2019-08-26 19:56:38 |
+| 18 | okkk    |          756 | NULL | NULL | NULL                |
+|  1 | OMKAR   |       500.23 | a    | x,z  | 2019-08-26 19:51:34 |
+| 12 | p       |         5221 | NULL | NULL | 2019-08-26 19:56:38 |
+|  6 | ytby    |          999 | NULL | NULL | 2019-08-26 19:56:38 |
++----+---------+--------------+------+------+---------------------+
+17 rows in set (0.00 sec)
+
+mysql> select a,b,sal;
+ERROR 1054 (42S22): Unknown column 'a' in 'field list'
+mysql> select a,b,sal from organs;
++----+---------+--------------+
+| a  | b       | sal          |
++----+---------+--------------+
+|  1 | OMKAR   |       500.23 |
+|  2 | akshay  |       500.23 |
+|  3 | bjhjh   |           88 |
+|  4 | cljk    |          999 |
+|  5 | dddnmnm |       550.23 |
+|  6 | ytby    |          999 |
+|  7 | hjway   |         3233 |
+|  8 | erfdn   |       221.23 |
+|  9 | oik     |          212 |
+| 10 | mmmmn   |        12224 |
+| 11 | dddddb  | 2.21245e+006 |
+| 12 | p       |         5221 |
+| 13 | hhjjel  |         2233 |
+| 14 | ....sa  |        99999 |
+| 16 | aa      |          900 |
+| 17 | aks     |          435 |
+| 18 | okkk    |          756 |
++----+---------+--------------+
+17 rows in set (0.00 sec)
+
+mysql> SELECT a,b,sal,mem,hob FROM organs
+    -> ORDER BY b
+    -> LIMIT 6;
++----+--------+--------+------+------+
+| a  | b      | sal    | mem  | hob  |
++----+--------+--------+------+------+
+| 14 | ....sa |  99999 | NULL | NULL |
+| 16 | aa     |    900 | NULL | NULL |
+| 17 | aks    |    435 | NULL | NULL |
+|  2 | akshay | 500.23 | NULL | NULL |
+|  3 | bjhjh  |     88 | NULL | NULL |
+|  4 | cljk   |    999 | NULL | NULL |
++----+--------+--------+------+------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT a,b,sal,mem,hob FROM organs
+    -> ORDER BY b
+    -> LIMIT 2,3;
++----+--------+--------+------+------+
+| a  | b      | sal    | mem  | hob  |
++----+--------+--------+------+------+
+| 17 | aks    |    435 | NULL | NULL |
+|  2 | akshay | 500.23 | NULL | NULL |
+|  3 | bjhjh  |     88 | NULL | NULL |
++----+--------+--------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT a,b,sal,mem,hob FROM organs
+    -> ORDER BY a
+    -> LIMIT 2,3;
++---+---------+--------+------+------+
+| a | b       | sal    | mem  | hob  |
++---+---------+--------+------+------+
+| 3 | bjhjh   |     88 | NULL | NULL |
+| 4 | cljk    |    999 | NULL | NULL |
+| 5 | dddnmnm | 550.23 | NULL | NULL |
++---+---------+--------+------+------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
