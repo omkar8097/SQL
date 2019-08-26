@@ -1,0 +1,224 @@
+mysql> SELECT * from omkar;
++------+--------+-----------+
+| ID   | NAME   | MOBILE_NO |
++------+--------+-----------+
+|    1 | akshay |   1000000 |
++------+--------+-----------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'omkar y',100645000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'omkar y',100645000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'omkar y',100645000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'omkar y',100645000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql>
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql>
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO omkar VALUES (2,'aky',100120000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT * from omkar;
++------+---------+-----------+
+| ID   | NAME    | MOBILE_NO |
++------+---------+-----------+
+|    1 | akshay  |   1000000 |
+|    2 | aky     | 100120000 |
+|    2 | omkar y | 100645000 |
+|    2 | omkar y | 100645000 |
+|    2 | omkar y | 100645000 |
+|    2 | omkar y | 100645000 |
+|    2 | aky     | 100120000 |
+|    2 | aky     | 100120000 |
+|    2 | aky     | 100120000 |
+|    2 | aky     | 100120000 |
+|    2 | aky     | 100120000 |
+|    2 | aky     | 100120000 |
+|    2 | aky     | 100120000 |
+|    2 | aky     | 100120000 |
+|    2 | aky     | 100120000 |
++------+---------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> ALTER TABLE omkar
+    -> ADD Email varchar(255);
+Query OK, 15 rows affected (0.19 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * from omkar;
++------+---------+-----------+-------+
+| ID   | NAME    | MOBILE_NO | Email |
++------+---------+-----------+-------+
+|    1 | akshay  |   1000000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | omkar y | 100645000 | NULL  |
+|    2 | omkar y | 100645000 | NULL  |
+|    2 | omkar y | 100645000 | NULL  |
+|    2 | omkar y | 100645000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
+|    2 | aky     | 100120000 | NULL  |
++------+---------+-----------+-------+
+15 rows in set (0.00 sec)
+
+mysql> ALTER TABLE omkar
+    -> modify COLUMN Email int;
+Query OK, 15 rows affected (0.13 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * from omkar;
++------+---------+-----------+-------+
+| ID   | NAME    | MOBILE_NO | Email |
++------+---------+-----------+-------+
+|    1 | akshay  |   1000000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
++------+---------+-----------+-------+
+15 rows in set (0.00 sec)
+
+mysql> update omkar
+    -> SET Email=123 WHERE NAME ='akshay';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * from omkar;
++------+---------+-----------+-------+
+| ID   | NAME    | MOBILE_NO | Email |
++------+---------+-----------+-------+
+|    1 | akshay  |   1000000 |   123 |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
+|    2 | aky     | 100120000 |  NULL |
++------+---------+-----------+-------+
+15 rows in set (0.00 sec)
+
+mysql> DELETE FROM omkar WHERE NAME ='aky';
+Query OK, 10 rows affected (0.02 sec)
+
+mysql> SELECT MOBILE_NO from omkar;
++-----------+
+| MOBILE_NO |
++-----------+
+|   1000000 |
+| 100645000 |
+| 100645000 |
+| 100645000 |
+| 100645000 |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * from omkar;
++------+---------+-----------+-------+
+| ID   | NAME    | MOBILE_NO | Email |
++------+---------+-----------+-------+
+|    1 | akshay  |   1000000 |   123 |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
++------+---------+-----------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> INSERT INTO omkar (ID,NAME, MOBILE_NO,Email) VALUES (2,'aky',100120000,231),(322,'a4ky',100120000,3165),(022,'aky',100120000,6542);
+Query OK, 3 rows affected (0.07 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * from omkar;
++------+---------+-----------+-------+
+| ID   | NAME    | MOBILE_NO | Email |
++------+---------+-----------+-------+
+|    1 | akshay  |   1000000 |   123 |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | aky     | 100120000 |   231 |
+|  322 | a4ky    | 100120000 |  3165 |
+|   22 | aky     | 100120000 |  6542 |
++------+---------+-----------+-------+
+8 rows in set (0.00 sec)
+
+mysql> UPDATE omkar
+    -> set NAME ='akkkk'
+    -> WHERE ID=1;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * from omkar;
++------+---------+-----------+-------+
+| ID   | NAME    | MOBILE_NO | Email |
++------+---------+-----------+-------+
+|    1 | akkkk   |   1000000 |   123 |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | omkar y | 100645000 |  NULL |
+|    2 | aky     | 100120000 |   231 |
+|  322 | a4ky    | 100120000 |  3165 |
+|   22 | aky     | 100120000 |  6542 |
++------+---------+-----------+-------+
+8 rows in set (0.00 sec)
+
+mysql>
