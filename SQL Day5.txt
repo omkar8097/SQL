@@ -1,0 +1,599 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.1.38-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database aksh
+    -> ;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> use aksh;
+Database changed
+mysql> create table a
+    -> (id int auto_increment primary key,)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near ')' at
+ line 2
+mysql> create table a
+    -> (id int auto_increment primary key,
+    -> name varchar(10) );
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> create table b
+    -> (id1 int primary key,
+    -> roll int);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> alter table a
+    -> set auto_increment = 30;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'set a
+uto_increment = 30' at line 2
+mysql> alter table a
+    -> set auto_increment=30;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'set a
+uto_increment=30' at line 2
+mysql> alter table a
+    -> auto_increment=30;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into a
+    -> (name)
+    -> values('a');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a;
++----+------+
+| id | name |
++----+------+
+| 30 | a    |
++----+------+
+1 row in set (0.02 sec)
+
+mysql> describe a;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(10) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.05 sec)
+
+mysql> alter table a
+    -> auto_increment increment =10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'incre
+ment =10' at line 2
+mysql> auto_increment increment =10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'auto_
+increment increment =10' at line 1
+mysql> select id from a;
++----+
+| id |
++----+
+| 30 |
++----+
+1 row in set (0.00 sec)
+
+mysql> insert into a
+    -> (name)
+    -> values('ab');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> alter table a
+    -> auto_increment_increment =10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'auto_
+increment_increment =10' at line 2
+mysql> set @@auto_increment_increment=10;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into a
+    -> (name )
+    -> values('bb');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> selet * from a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'selet
+ * from a' at line 1
+mysql> selcet * from a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'selce
+t * from a' at line 1
+mysql> select * from a;
++----+------+
+| id | name |
++----+------+
+| 30 | a    |
+| 31 | ab   |
+| 41 | bb   |
++----+------+
+3 rows in set (0.00 sec)
+
+mysql> set auto_increment_increment=10;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set auto_increment_increment=100;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into a
+    -> (name )
+    -> values('bbc');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from a;
++-----+------+
+| id  | name |
++-----+------+
+|  30 | a    |
+|  31 | ab   |
+|  41 | bb   |
+| 101 | bbc  |
++-----+------+
+4 rows in set (0.00 sec)
+
+mysql> set auto_increment_increment=10;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into a
+    -> (name)
+    -> values('xx');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * froma;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'froma
+' at line 1
+mysql> select * from a;
++-----+------+
+| id  | name |
++-----+------+
+|  30 | a    |
+|  31 | ab   |
+|  41 | bb   |
+| 101 | bbc  |
+| 151 | xx   |
++-----+------+
+5 rows in set (0.00 sec)
+
+mysql> set @@auto_increment_increment=100;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into a
+    -> values('xx');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into a
+    -> (name)
+    -> values('xxx');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from a;
++-----+------+
+| id  | name |
++-----+------+
+|  30 | a    |
+|  31 | ab   |
+|  41 | bb   |
+| 101 | bbc  |
+| 151 | xx   |
+| 201 | xxx  |
++-----+------+
+6 rows in set (0.00 sec)
+
+mysql> set @auto_increment_increment=10;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into a
+    -> (name)
+    -> values('xxx');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a;
++-----+------+
+| id  | name |
++-----+------+
+|  30 | a    |
+|  31 | ab   |
+|  41 | bb   |
+| 101 | bbc  |
+| 151 | xx   |
+| 201 | xxx  |
+| 301 | xxx  |
++-----+------+
+7 rows in set (0.00 sec)
+
+mysql> set @@auto_increment_increment=1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into a
+    -> (name)
+    -> values('xxx');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a;
++-----+------+
+| id  | name |
++-----+------+
+|  30 | a    |
+|  31 | ab   |
+|  41 | bb   |
+| 101 | bbc  |
+| 151 | xx   |
+| 201 | xxx  |
+| 301 | xxx  |
+| 352 | xxx  |
++-----+------+
+8 rows in set (0.00 sec)
+
+mysql> set @auto_increment_increment=100-50;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into a
+    -> (name)
+    -> values('xxx');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a;
++-----+------+
+| id  | name |
++-----+------+
+|  30 | a    |
+|  31 | ab   |
+|  41 | bb   |
+| 101 | bbc  |
+| 151 | xx   |
+| 201 | xxx  |
+| 301 | xxx  |
+| 352 | xxx  |
+| 353 | xxx  |
++-----+------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT name FROM a
+    -> WHERE id IN(30,31,151,353);
++------+
+| name |
++------+
+| a    |
+| ab   |
+| xx   |
+| xxx  |
++------+
+4 rows in set (0.03 sec)
+
+mysql> SELECT NAME FROM a
+    ->  WHERE id between 40 AND 350;
++------+
+| NAME |
++------+
+| bb   |
+| bbc  |
+| xx   |
+| xxx  |
+| xxx  |
++------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT NAME FROM a
+    ->  WHERE id in (30,31,NUL);
+ERROR 1054 (42S22): Unknown column 'NUL' in 'where clause'
+mysql>  WHERE id in (30,31,NULL);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'WHERE
+ id in (30,31,NULL)' at line 1
+mysql> SELECT NAME FROM a
+    ->  WHERE id in (30,31,NULL);
++------+
+| NAME |
++------+
+| a    |
+| ab   |
++------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT NAME FROM a
+    ->  WHERE id not in (30,31,NULL);
+Empty set (0.00 sec)
+
+mysql> SELECT NAME FROM a
+    ->  WHERE id*.10>30 AND (name LIKE 'a%');
+Empty set (0.02 sec)
+
+mysql>  WHERE (id*.10)>30 AND (name LIKE 'a%');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'WHERE
+ (id*.10)>30 AND (name LIKE 'a%')' at line 1
+mysql> SELECT NAME FROM a
+    ->  WHERE (id*.10)>30 AND (name LIKE 'a%');
+Empty set (0.00 sec)
+
+mysql> SELECT NAME FROM a
+    ->  WHERE id*.10>30 AND (name LIKE '%a%');
+Empty set (0.00 sec)
+
+mysql> SELECT NAME FROM a
+    ->  WHERE id*.10>30 AND (name LIKE '%x%');
++------+
+| NAME |
++------+
+| xxx  |
+| xxx  |
+| xxx  |
++------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT NAME FROM a
+    ->  WHERE id*.10>30 AND (name LIKE 'x%');
++------+
+| NAME |
++------+
+| xxx  |
+| xxx  |
+| xxx  |
++------+
+3 rows in set (0.00 sec)
+
+mysql>  WHERE id*.10>30 AND (name LIKE '%x');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'WHERE
+ id*.10>30 AND (name LIKE '%x')' at line 1
+mysql> SELECT NAME FROM a
+    ->  WHERE id*.10>30 AND (name LIKE '%x');
++------+
+| NAME |
++------+
+| xxx  |
+| xxx  |
+| xxx  |
++------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT NAME FROM a
+    ->  WHERE id*.10>30 AND (name LIKE 'xx');
+Empty set (0.00 sec)
+
+mysql> SELECT ABS(-10)=100;
++--------------+
+| ABS(-10)=100 |
++--------------+
+|            0 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ID ,ABS(ID) FROM A;
++-----+---------+
+| ID  | ABS(ID) |
++-----+---------+
+|  30 |      30 |
+|  31 |      31 |
+|  41 |      41 |
+| 101 |     101 |
+| 151 |     151 |
+| 201 |     201 |
+| 301 |     301 |
+| 352 |     352 |
+| 353 |     353 |
++-----+---------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT ID ,SUM(ID) FROM A;
++----+---------+
+| ID | SUM(ID) |
++----+---------+
+| 30 |    1561 |
++----+---------+
+1 row in set (0.01 sec)
+
+mysql> SELECT ID ,ABS(SUM(ID)) AS TT FROM A;
++----+------+
+| ID | TT   |
++----+------+
+| 30 | 1561 |
++----+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ID ,ABS(SUM(ID)) AS TT,MAX(ID),MIN(ID), AVERAGE(ID) FROM A;
+ERROR 1305 (42000): FUNCTION aksh.AVERAGE does not exist
+mysql> SELECT ID ,ABS(SUM(ID)) AS TT,MAX(ID),MIN(ID) FROM A;
++----+------+---------+---------+
+| ID | TT   | MAX(ID) | MIN(ID) |
++----+------+---------+---------+
+| 30 | 1561 |     353 |      30 |
++----+------+---------+---------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ID ,Average(ID) FROM A;
+ERROR 1305 (42000): FUNCTION aksh.Average does not exist
+mysql> SELECT ID ,Avg(ID) FROM A;
++----+----------+
+| ID | Avg(ID)  |
++----+----------+
+| 30 | 173.4444 |
++----+----------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> select * from a ;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | vita  |
+|  2 | nidhi |
+| 10 | vi    |
+| 11 | vidya |
++----+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into a (name) values ('vidya');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a ;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | vita  |
+|  2 | nidhi |
+| 10 | vi    |
+| 11 | vidya |
+| 12 | vidya |
++----+-------+
+5 rows in set (0.00 sec)
+
+mysql> set @@auto_increment_increment = 10 ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from a ;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | vita  |
+|  2 | nidhi |
+| 10 | vi    |
+| 11 | vidya |
+| 12 | vidya |
++----+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into a (name) values ('omkar');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a ;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | vita  |
+|  2 | nidhi |
+| 10 | vi    |
+| 11 | vidya |
+| 12 | vidya |
+| 21 | omkar |
++----+-------+
+6 rows in set (0.00 sec)
+
+mysql> insert into a (name) values ('om');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a ;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | vita  |
+|  2 | nidhi |
+| 10 | vi    |
+| 11 | vidya |
+| 12 | vidya |
+| 21 | omkar |
+| 31 | om    |
++----+-------+
+7 rows in set (0.00 sec)
+
+mysql> set @@auto_increment_increment = 100 ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into a (name) values ('ok');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a ;
++-----+-------+
+| id  | name  |
++-----+-------+
+|   1 | vita  |
+|   2 | nidhi |
+|  10 | vi    |
+|  11 | vidya |
+|  12 | vidya |
+|  21 | omkar |
+|  31 | om    |
+| 101 | ok    |
++-----+-------+
+8 rows in set (0.00 sec)
+
+mysql> insert into a (name) values ('ovc');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a ;
++-----+-------+
+| id  | name  |
++-----+-------+
+|   1 | vita  |
+|   2 | nidhi |
+|  10 | vi    |
+|  11 | vidya |
+|  12 | vidya |
+|  21 | omkar |
+|  31 | om    |
+| 101 | ok    |
+| 201 | ovc   |
++-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> show variables like 'auto_inc%'
+    -> ;
++--------------------------+-------+
+| Variable_name            | Value |
++--------------------------+-------+
+| auto_increment_increment | 100   |
+| auto_increment_offset    | 1     |
++--------------------------+-------+
+2 rows in set (0.01 sec)
+
+mysql> set @@auto_increment_offset = 20 ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from a ;
++-----+-------+
+| id  | name  |
++-----+-------+
+|   1 | vita  |
+|   2 | nidhi |
+|  10 | vi    |
+|  11 | vidya |
+|  12 | vidya |
+|  21 | omkar |
+|  31 | om    |
+| 101 | ok    |
+| 201 | ovc   |
++-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> insert into a (name) values ('ovck');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from a ;
++-----+-------+
+| id  | name  |
++-----+-------+
+|   1 | vita  |
+|   2 | nidhi |
+|  10 | vi    |
+|  11 | vidya |
+|  12 | vidya |
+|  21 | omkar |
+|  31 | om    |
+| 101 | ok    |
+| 201 | ovc   |
+| 320 | ovck  |
++-----+-------+
+10 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+
+
+
