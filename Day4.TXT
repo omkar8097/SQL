@@ -1,0 +1,403 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.1.38-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| adventureworks     |
+| app1               |
+| chaparala          |
+| emart              |
+| employee           |
+| etour              |
+| exam               |
+| formdata           |
+| mohit              |
+| mydata             |
+| mydb               |
+| mydb1              |
+| mysql              |
+| newdata            |
+| numbertypes        |
+| pra                |
+| productcategory    |
+| random             |
+| table1             |
+| testdb             |
+| umesh              |
+| vocabulary         |
++--------------------+
+23 rows in set (0.63 sec)
+
+mysql> CREATE DATABASE BOOKS;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> CREATE TABLE book
+    -> (memberid INT AUTO_INCREMENT primary key,
+    -> Fname VARCHAR(20) NOT NULL,
+    -> Mname VARCHAR(20),
+    -> Email VARCHAR(20),
+    -> Phone CHAR(10) UNIQUE ,
+    -> mem_type ENUM('regular','silver','gold'));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> describe book;
++----------+---------------------------------+------+-----+---------+----------------+
+| Field    | Type                            | Null | Key | Default | Extra          |
++----------+---------------------------------+------+-----+---------+----------------+
+| memberid | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| Fname    | varchar(20)                     | NO   |     | NULL    |                |
+| Mname    | varchar(20)                     | YES  |     | NULL    |                |
+| Email    | varchar(20)                     | YES  |     | NULL    |                |
+| Phone    | char(10)                        | YES  | UNI | NULL    |                |
+| mem_type | enum('regular','silver','gold') | YES  |     | NULL    |                |
++----------+---------------------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE book
+    ->  ADD CONSTRAINT uni_email UNIQUE (Email);
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe book;
++----------+---------------------------------+------+-----+---------+----------------+
+| Field    | Type                            | Null | Key | Default | Extra          |
++----------+---------------------------------+------+-----+---------+----------------+
+| memberid | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| Fname    | varchar(20)                     | NO   |     | NULL    |                |
+| Mname    | varchar(20)                     | YES  |     | NULL    |                |
+| Email    | varchar(20)                     | YES  | UNI | NULL    |                |
+| Phone    | char(10)                        | YES  | UNI | NULL    |                |
+| mem_type | enum('regular','silver','gold') | YES  |     | NULL    |                |
++----------+---------------------------------+------+-----+---------+----------------+
+6 rows in set (0.01 sec)
+
+
+mysql> INSERT INTO book
+    -> (memberid,Fname, Email, Phone)VALUES (1532,'omkar','komkar8@gmail.com','8097580594');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> describe book;
++----------+---------------------------------+------+-----+---------+----------------+
+| Field    | Type                            | Null | Key | Default | Extra          |
++----------+---------------------------------+------+-----+---------+----------------+
+| memberid | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| Fname    | varchar(20)                     | NO   |     | NULL    |                |
+| Mname    | varchar(20)                     | YES  |     | NULL    |                |
+| Email    | varchar(20)                     | YES  | UNI | NULL    |                |
+| Phone    | char(10)                        | YES  | UNI | NULL    |                |
+| mem_type | enum('regular','silver','gold') | YES  |     | NULL    |                |
++----------+---------------------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT *
+    -> from book;
++----------+-------+-------+-------------------+------------+----------+
+| memberid | Fname | Mname | Email             | Phone      | mem_type |
++----------+-------+-------+-------------------+------------+----------+
+|     1532 | omkar | NULL  | komkar8@gmail.com | 8097580594 | NULL     |
++----------+-------+-------+-------------------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE book
+    -> ADD COLUMN ADDR VARCHAR(20) ;
+Query OK, 1 row affected (0.25 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *
+    -> from book;
++----------+-------+-------+-------------------+------------+----------+------+
+| memberid | Fname | Mname | Email             | Phone      | mem_type | ADDR |
++----------+-------+-------+-------------------+------------+----------+------+
+|     1532 | omkar | NULL  | komkar8@gmail.com | 8097580594 | NULL     | NULL |
++----------+-------+-------+-------------------+------------+----------+------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE book
+    ->  DROP COLUMN ADDR ;
+Query OK, 1 row affected (0.16 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *
+    -> from book;
++----------+-------+-------+-------------------+------------+----------+
+| memberid | Fname | Mname | Email             | Phone      | mem_type |
++----------+-------+-------+-------------------+------------+----------+
+|     1532 | omkar | NULL  | komkar8@gmail.com | 8097580594 | NULL     |
++----------+-------+-------+-------------------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO book
+    -> (memberid,Fname, Email, Phone)VALUES (1532,'omkar','komkar8@gmail.com','8097580594');
+ERROR 1062 (23000): Duplicate entry '1532' for key 'PRIMARY'
+mysql> TRUNCATE book;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql>
+mysql> INSERT INTO book
+    ->     (memberid,Fname, Email, Phone)VALUES (1532,'omkar','komkar8@gmail.com','8097580594'),
+    -> (1632,'ommkar','komar8@gmail.com','80958594'),(1562,'omkkar','komkr8@gmail.com','80970594'),(2532,'omr','komka8@gmail.com','80958094');
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> SELECT *
+    -> from book;
++----------+--------+-------+-------------------+------------+----------+
+| memberid | Fname  | Mname | Email             | Phone      | mem_type |
++----------+--------+-------+-------------------+------------+----------+
+|     1532 | omkar  | NULL  | komkar8@gmail.com | 8097580594 | NULL     |
+|     1562 | omkkar | NULL  | komkr8@gmail.com  | 80970594   | NULL     |
+|     1632 | ommkar | NULL  | komar8@gmail.com  | 80958594   | NULL     |
+|     2532 | omr    | NULL  | komka8@gmail.com  | 80958094   | NULL     |
++----------+--------+-------+-------------------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLR book
+    ->  DROP COLUMN Mname;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLR book
+ DROP COLUMN Mname' at line 1
+mysql> ALTER TABLE book
+    ->  DROP COLUMN Mname;
+Query OK, 4 rows affected (0.14 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE booktran
+    ->      (transid int AUTO_INCREMENT PRIMARY KEY,
+    -> transdate DATETIME ,
+    -> memberid int REFERENCES book(memberid));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> DESCRIBE booktran;
++-----------+----------+------+-----+---------+----------------+
+| Field     | Type     | Null | Key | Default | Extra          |
++-----------+----------+------+-----+---------+----------------+
+| transid   | int(11)  | NO   | PRI | NULL    | auto_increment |
+| transdate | datetime | YES  |     | NULL    |                |
+| memberid  | int(11)  | YES  |     | NULL    |                |
++-----------+----------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> ALTER TABLE booktran
+    -> ADD CONSTRAINT booktran_mem_FK FOREIGN KEY (memberid)
+    -> REFERENCES book(memberid);
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE booktran;
++-----------+----------+------+-----+---------+----------------+
+| Field     | Type     | Null | Key | Default | Extra          |
++-----------+----------+------+-----+---------+----------------+
+| transid   | int(11)  | NO   | PRI | NULL    | auto_increment |
+| transdate | datetime | YES  |     | NULL    |                |
+| memberid  | int(11)  | YES  | MUL | NULL    |                |
++-----------+----------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE book
+    -> ADD COLUMN transid int NOT NULL;
+Query OK, 4 rows affected (0.16 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE book
+    -> ADD CONSTRAINT ;
+Query OK, 4 rows affected (0.19 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE book
+    -> DROP COLUMN transid;
+Query OK, 4 rows affected (0.16 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE book
+    -> ADD COLUMN transid INT REFERENCES booktrans(transid);
+Query OK, 4 rows affected (0.27 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE book;
++----------+---------------------------------+------+-----+---------+----------------+
+| Field    | Type                            | Null | Key | Default | Extra          |
++----------+---------------------------------+------+-----+---------+----------------+
+| memberid | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| Fname    | varchar(20)                     | NO   |     | NULL    |                |
+| Email    | varchar(20)                     | YES  | UNI | NULL    |                |
+| Phone    | char(10)                        | YES  | UNI | NULL    |                |
+| mem_type | enum('regular','silver','gold') | YES  |     | NULL    |                |
+| transid  | int(11)                         | YES  |     | NULL    |                |
++----------+---------------------------------+------+-----+---------+----------------+
+6 rows in set (0.01 sec)
+
+mysql> INSERT INTO book(transid) VALUES (254);
+ERROR 1364 (HY000): Field 'Fname' doesn't have a default value
+mysql> INSERT INTO book(transid,Fname) VALUES (254,'hvbhhg');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> DESCRIBE book;
++----------+---------------------------------+------+-----+---------+----------------+
+| Field    | Type                            | Null | Key | Default | Extra          |
++----------+---------------------------------+------+-----+---------+----------------+
+| memberid | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| Fname    | varchar(20)                     | NO   |     | NULL    |                |
+| Email    | varchar(20)                     | YES  | UNI | NULL    |                |
+| Phone    | char(10)                        | YES  | UNI | NULL    |                |
+| mem_type | enum('regular','silver','gold') | YES  |     | NULL    |                |
+| transid  | int(11)                         | YES  |     | NULL    |                |
++----------+---------------------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select* from book;
++----------+--------+-------------------+------------+----------+---------+
+| memberid | Fname  | Email             | Phone      | mem_type | transid |
++----------+--------+-------------------+------------+----------+---------+
+|     1532 | omkar  | komkar8@gmail.com | 8097580594 | NULL     |    NULL |
+|     1562 | omkkar | komkr8@gmail.com  | 80970594   | NULL     |    NULL |
+|     1632 | ommkar | komar8@gmail.com  | 80958594   | NULL     |    NULL |
+|     2532 | omr    | komka8@gmail.com  | 80958094   | NULL     |    NULL |
+|     2533 | hvbhhg | NULL              | NULL       | NULL     |     254 |
++----------+--------+-------------------+------------+----------+---------+
+5 rows in set (0.00 sec)
+
+
+COMPSITE 
+
+
+mysql> CREATE DATABASE Test;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE Test;
+Database changed
+
+mysql> CREATE TABLE PT(
+    -> key1 VARCHAR(20),
+    -> kay2 date);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> SELECT* FROM pt;
+Empty set (0.00 sec)
+
+mysql> ALTER TABLE pt ADD CONSTRAINT PK PRIMARY KEY (key1,kay2);
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE st
+    -> (ID int ,
+    -> key1 VARCHAR(20),
+    -> kay2 date);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> ALTER TABLE st ADD CONSTRAINT fk FOREIGN KEY (key1 ,kay2) REFERENCES pt(key1,kay2);
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO pt values ('omk',20190214),('oamk',20190223),('omek',20290213),('omkg',20890213);
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * from pt;
++------+------------+
+| key1 | kay2       |
++------+------------+
+| oamk | 2019-02-23 |
+| omek | 2029-02-13 |
+| omk  | 2019-02-14 |
+| omkg | 2089-02-13 |
++------+------------+
+4 rows in set (0.00 sec)
+
+mysql> DESCR pt;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESCR pt' at line 1
+mysql> DESC  pt;
++-------+-------------+------+-----+------------+-------+
+| Field | Type        | Null | Key | Default    | Extra |
++-------+-------------+------+-----+------------+-------+
+| key1  | varchar(20) | NO   | PRI |            |       |
+| kay2  | date        | NO   | PRI | 0000-00-00 |       |
++-------+-------------+------+-----+------------+-------+
+2 rows in set (0.03 sec)
+
+mysql> SELECT * from st;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO st values (1,'omk',20190214),(2,'oamk',20190223),(3,'omek',20290213),(4,'omkg',20890213);
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * from st;
++------+------+------------+
+| ID   | key1 | kay2       |
++------+------+------------+
+|    1 | omk  | 2019-02-14 |
+|    2 | oamk | 2019-02-23 |
+|    3 | omek | 2029-02-13 |
+|    4 | omkg | 2089-02-13 |
++------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO st values (6,'oeemk',20190214);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`test`.`st`, CONSTRAINT `fk` FOREIGN KEY (`key1`, `kay2`) REFERENCES `pt` (`key1`, `kay2`))
+mysql>
+
+mysql> SELECT key1 FROM pt WHERE key1 LIKE 'o%';
++------+
+| key1 |
++------+
+| oamk |
+| omek |
+| omk  |
+| omkg |
++------+
+4 rows in set (0.03 sec)
+
+mysql> SELECT key1 FROM pt WHERE key1 LIKE '%o%';
++------+
+| key1 |
++------+
+| oamk |
+| omek |
+| omk  |
+| omkg |
++------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT key1 FROM pt WHERE key1 LIKE '%o';
+Empty set (0.00 sec)
+
+mysql> SELECT key1 FROM pt WHERE key1 LIKE '%k';
++------+
+| key1 |
++------+
+| oamk |
+| omek |
+| omk  |
++------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT key1 FROM pt WHERE key1 LIKE 'o__';
++------+
+| key1 |
++------+
+| omk  |
++------+
+1 row in set (0.00 sec)
+
+mysql> SELECT key1 FROM pt WHERE key1 LIKE 'o___';
++------+
+| key1 |
++------+
+| oamk |
+| omek |
+| omkg |
++------+
+3 rows in set (0.01 sec)
+
+mysql>
+
+
+
+
